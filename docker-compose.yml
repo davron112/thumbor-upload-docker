@@ -10,7 +10,7 @@ services:
 
   ### Thumbor #########################################
   thumbor:
-    build: ./
+    build: ./thumbor
     volumes:
       - ${DATA_PATH_HOST}/thumbor/data:/data
       - ${DATA_PATH_HOST}/thumbor/data:/logs
@@ -122,4 +122,25 @@ services:
       - TC_AWS_STORE_METADATA=${TC_AWS_STORE_METADATA}
     networks:
       - frontend
+      - backend
+
+  ### Redis ################################################
+  redis:
+    build: ./redis
+    volumes:
+      - ${DATA_PATH_HOST}/redis:/data
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - backend
+
+  ### MongoDB ##############################################
+  mongo:
+    build: ./mongo
+    ports:
+      - "${MONGODB_PORT}:27017"
+    volumes:
+      - ${DATA_PATH_HOST}/mongo:/data/db
+      - ${DATA_PATH_HOST}/mongo_config:/data/configdb
+    networks:
       - backend
