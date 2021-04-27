@@ -25,6 +25,7 @@ Demo
 You can see thumbor in action at http://thumborize.me/
 
 Join the chat at https://gitter.im/thumbor/thumbor
+
 <a href="https://github.com/thumbor/thumbor">Github Repository</a>
 
 <a href="https://thumbor.readthedocs.io/en/latest/">Docs</a>
